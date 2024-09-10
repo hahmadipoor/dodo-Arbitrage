@@ -52,5 +52,13 @@ export type FundingParams={
     decimals:number 
 }
 
+export type PriceInUsdcParams={
+    router:string;
+    factory:string;
+    tokenAddress: string;
+    id:number;
+    provider:ethers.JsonRpcProvider;
+}
+
 export type erc20Token= {[erc20: string]: IToken};//defining mapped type
 export type RouteMap={[protocol: string]: string};

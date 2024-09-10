@@ -44,7 +44,6 @@ contract Flashloan is IFlashloan, DodoBase, FlashloanValidation, Withdraw {
         console.log(params.flashLoanPool);
         address loanToken = RouteUtils.getInitialToken(params.routes[0]);
         console.log("CONTRACT BALANCE Before BORROW",IERC20(params.flashLoanPool).balanceOf(address(this)));
-        address btoken=IDODO(params.flashLoanPool)._BASE_TOKEN_();
         //approveToken(loanToken, params.flashLoanPool, params.loanAmount);
         IDODO(params.flashLoanPool).flashLoan(
             IDODO(params.flashLoanPool)._BASE_TOKEN_() == loanToken ? params.loanAmount: 0,// amount of base token that user wants to borrow
@@ -175,7 +174,7 @@ contract Flashloan is IFlashloan, DodoBase, FlashloanValidation, Withdraw {
         require(IERC20(token).approve(to, amountIn), "approve failed.");
     }
 
-    fallback() external payable { 
-        console.log(msg.sender); 
-    }
+    // fallback() external payable { 
+    //     console.log(msg.sender); 
+    // }
 }

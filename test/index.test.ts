@@ -8,7 +8,10 @@ import { ERC20Token } from "../constants/tokens";
 import { Protocols } from "../constants";
 import { executeFlashloan } from "../scripts/executeFlashloan";
 import flashLoanJson from "../artifacts/contracts/FlashLoan.sol/Flashloan.json";
-
+import WethABI from "../abis/polygonWethAbi.json";
+import { ERC20__factory } from "../typechain-types";
+import { impersonateAccount } from "@nomicfoundation/hardhat-toolbox/network-helpers";
+import { impersonateFundERC20 } from "../utils/funding";
 
 require("dotenv").config();
 
@@ -25,10 +28,15 @@ describe("DODO Flashloan", ()=>{
             wallet 
         });
 
-        // await wallet.sendTransaction({
-        //             to: Flashloan.target.toString(),
-        //             value: ethers.parseUnits('2', 'ether'),
-        //         });
+        //const tokenContract = ERC20__factory.connect(ERC20Token.WETH?.address, provider)
+        // const mrWhale="0x8832924854e3Cedb0a6Abf372e6CCFF9F7654332";
+        // await impersonateFundERC20({
+        //     sender:mrWhale, 
+        //     tokenContract, 
+        //     recipient: await Flashloan.getAddress(),
+        //     decimals: 18, 
+        //     amount: "1"
+        // });
         const params: FlashLoanParams={
             flashLoanContractAddress:Flashloan.target.toString(), 
             flashLoanPool: dodoV2Pool.WETH_ULT, 

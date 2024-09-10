@@ -26,8 +26,8 @@ const config: HardhatUserConfig = {
       url: "http://localhost:8545"
     }, 
     polygon:{
-      url:"https://polygon-mainnet.infura.io/v3/6000068b86d54cc99d7adca1015120c5"
-    }
+      url:"https://polygon-mainnet.infura.io/v3/6000068b86d54cc99d7adca1015120c5",
+    },
   }
 };
 
